@@ -1,0 +1,289 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>LinkNITT — Colorful Demo</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <!-- local bootstrap as in your project -->
+  <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Colorful theme */
+    :root{
+      --bg-1: #0f172a;
+      --gradient-a: linear-gradient(135deg,#7b61ff,#00c3a3);
+      --gradient-b: linear-gradient(135deg,#ff6b6b,#ffb86b);
+      --card: #ffffff;
+      --muted: #6c757d;
+      --glass: rgba(255,255,255,0.65);
+      --glass-2: rgba(255,255,255,0.9);
+      --accent-1: #7b61ff;
+      --accent-2: #00c3a3;
+      --accent-3: #ff6b6b;
+    }
+
+    html,body { height:100%; }
+    body {
+      margin:0; padding:18px 12px 72px;
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(800px 400px at 10% 10%, rgba(123,97,255,0.08), transparent 12%),
+        radial-gradient(700px 300px at 90% 90%, rgba(0,195,163,0.06), transparent 12%),
+        #f7fbff;
+      color:#0b1220;
+    }
+
+    .container-max { max-width:1120px; margin: 0 auto; }
+
+    /* Header */
+    .topbar {
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; margin-bottom:14px;
+    }
+    .brand {
+      display:flex; align-items:center; gap:12px;
+    }
+    .logo {
+      width:64px; height:64px; border-radius:14px;
+      display:flex; align-items:center; justify-content:center; color:white;
+      background: linear-gradient(135deg,#7b61ff,#00c3a3);
+      font-weight:700; font-size:20px; box-shadow:0 12px 36px rgba(123,97,255,0.12);
+    }
+    .app-title { font-size:1.15rem; font-weight:700; letter-spacing:0.2px; }
+    .app-sub { color:var(--muted); font-size:0.9rem; }
+
+    /* card */
+    .card-custom {
+      background:var(--card); border-radius:12px; padding:14px;
+      box-shadow: 0 18px 40px rgba(12,18,60,0.06); border:0; margin-bottom:12px;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .card-custom:hover { transform: translateY(-4px); box-shadow:0 30px 60px rgba(12,18,60,0.08); }
+
+    /* sections */
+    .section-head { display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+    .dot { width:12px; height:12px; border-radius:50%; box-shadow:0 6px 18px rgba(0,0,0,0.06); }
+    .dot-purple { background: linear-gradient(90deg,#7b61ff,#9b8bff); }
+    .dot-teal { background: linear-gradient(90deg,#00c3a3,#5fe6b8); }
+    .dot-coral { background: linear-gradient(90deg,#ff6b6b,#ff9e8a); }
+
+    .small-muted { color:var(--muted); font-size:0.9rem; }
+
+    /* input focus */
+    .form-control:focus, .form-select:focus {
+      border-color: rgba(123,97,255,0.7);
+      box-shadow: 0 10px 28px rgba(123,97,255,0.08);
+    }
+
+    /* list styles */
+    .list-empty { color:var(--muted); padding:14px 0; text-align:center; }
+    .list-group-item { border-radius:10px; margin-bottom:8px; border:0; padding:12px; }
+
+    /* buttons */
+    .btn-gradient {
+      border:0; color:#fff; background: linear-gradient(90deg,#7b61ff,#00c3a3);
+      box-shadow:0 8px 22px rgba(99,102,241,0.12);
+    }
+    .btn-soft {
+      background:linear-gradient(90deg,#f7f9ff,#fff7f3); color:#222; border:1px solid rgba(0,0,0,0.03);
+    }
+
+    /* toast container */
+    .toast-container { position: fixed; right: 18px; bottom: 18px; z-index:1200; }
+
+    /* mini info box */
+    .info-pill {
+      display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px;
+      background: linear-gradient(90deg, rgba(123,97,255,0.08), rgba(0,195,163,0.06));
+      color: #15324b; font-weight:600;
+    }
+
+    /* colorful action buttons inside list items*/
+    .action-buy { background: linear-gradient(90deg,#00c3a3,#7b61ff); color:#fff; border:0; }
+    .action-apply { background: linear-gradient(90deg,#ff6b6b,#ff9e8a); color:#fff; border:0; }
+
+    /* recommendations layout */
+    .recs-grid { display:flex; gap:12px; flex-wrap:wrap; }
+    .rec-col { flex:1 1 300px; min-width:260px; }
+
+    /* responsive spacing */
+    @media (max-width:768px) {
+      .logo { width:56px; height:56px; font-size:18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container-max">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">LN</div>
+        <div>
+          <div class="app-title">LinkNITT — Demo</div>
+          <div class="app-sub">A colorful playground for marketplace, jobs and mentorship</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="info-pill"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="transform:translateY(1px)"><path d="M12 2L2 7v7c0 5 4 9 10 9s10-4 10-9V7l-10-5z" fill="rgba(123,97,255,0.18)"/><path d="M12 2v20c5 0 9-4 9-9V7L12 2z" fill="rgba(0,195,163,0.12)"/></svg> Demo</div>
+        <!-- <button id="nav-logout" class="btn btn-outline-danger d-none" onclick="logout()">Logout</button> -->
+      </div>
+    </header>
+
+    <main>
+
+      <!-- AUTH -->
+      <section id="auth" class="card-custom">
+        <div class="row gx-3 gy-3">
+          <div class="col-md-6">
+            <div class="section-head"><div class="dot dot-purple"></div><h5 class="mb-0">Register</h5></div>
+            <form onsubmit="event.preventDefault(); register();">
+              <div class="mb-2 form-floating">
+                <input id="reg-name" class="form-control" placeholder="Name">
+                <label for="reg-name">Full name</label>
+              </div>
+              <div class="mb-2 form-floating">
+                <input id="reg-email" class="form-control" placeholder="Email">
+                <label for="reg-email">Email</label>
+              </div>
+              <div class="mb-2 form-floating">
+                <input id="reg-password" type="password" class="form-control" placeholder="Password">
+                <label for="reg-password">Password</label>
+              </div>
+              <div class="mb-2 form-floating">
+                <input id="reg-dept" class="form-control" placeholder="Department">
+                <label for="reg-dept">Department (optional)</label>
+              </div>
+              <div class="mb-3">
+                <select id="reg-role" class="form-select">
+                  <option>Student</option><option>Faculty</option><option>Staff</option><option>Alumni</option>
+                </select>
+              </div>
+              <div class="d-flex gap-2">
+                <button class="btn btn-gradient" type="submit">Create account</button>
+                <!-- <button type="button" class="btn btn-soft" onclick="seed()">Seed demo</button> -->
+              </div>
+            </form>
+          </div>
+
+          <div class="col-md-6">
+            <div class="section-head"><div class="dot dot-teal"></div><h5 class="mb-0">Login</h5></div>
+            <form onsubmit="event.preventDefault(); login();">
+              <div class="mb-2 form-floating">
+                <input id="login-email" class="form-control" placeholder="Email">
+                <label for="login-email">Email</label>
+              </div>
+              <div class="mb-3 form-floating">
+                <input id="login-password" type="password" class="form-control" placeholder="Password">
+                <label for="login-password">Password</label>
+              </div>
+              <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-success">Login</button>
+              </div>
+            </form>
+
+            <div id="auth-msg" class="mt-3"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- APP -->
+      <section id="app" style="display:none">
+
+        <div class="card-custom d-flex align-items-center justify-content-between mb-3">
+          <div>
+            <div id="welcome" style="font-weight:700; font-size:1.05rem">User</div>
+            <div id="user-dept" class="small-muted"></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <div id="user-role-badge" class="small-muted" style="background:linear-gradient(90deg,#fff,#fff); padding:8px 10px; border-radius:999px; font-weight:700;"></div>
+            <button class="btn btn-outline-danger" onclick="logout()">Logout</button>
+          </div>
+        </div>
+
+        <!-- Marketplace -->
+        <div class="card-custom mb-3">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <div class="d-flex align-items-center gap-10"><div class="dot dot-purple"></div><h5 class="mb-0">Marketplace</h5></div>
+            <div class="small-muted">Buy & sell within campus</div>
+          </div>
+
+          <div id="items" class="list-group mb-3"><div class="list-empty">Loading items…</div></div>
+
+          <div id="faculty-add" style="display:none">
+            <div class="input-group">
+              <input id="new-item" class="form-control" placeholder="Item name">
+              <button class="btn btn-gradient" onclick="addItem()">Add item</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Jobs -->
+        <div class="card-custom mb-3">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <div class="d-flex align-items-center gap-10"><div class="dot dot-teal"></div><h5 class="mb-0">Jobs</h5></div>
+            <div class="small-muted">Post or apply to roles</div>
+          </div>
+
+          <div id="jobs" class="list-group mb-3"><div class="list-empty">Loading jobs…</div></div>
+
+          <div id="faculty-job" style="display:none" class="mt-2">
+            <div class="row g-2">
+              <div class="col-md-5"><input id="job-title" class="form-control" placeholder="Job title"></div>
+              <div class="col-md-5"><input id="job-desc" class="form-control" placeholder="Short description"></div>
+              <div class="col-md-2 d-grid"><button class="btn btn-gradient" onclick="postJob()">Post</button></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mentors -->
+        <div class="card-custom mb-3">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <div class="d-flex align-items-center gap-10"><div class="dot dot-coral"></div><h5 class="mb-0">Mentors</h5></div>
+            <div class="small-muted">Offer or request mentorship</div>
+          </div>
+
+          <div id="mentors" class="list-group mb-3"><div class="list-empty">Loading mentors…</div></div>
+
+          <div id="faculty-mentor" style="display:none" class="mt-2">
+            <div class="row g-2">
+              <div class="col-md-4"><input id="mentor-topic" class="form-control" placeholder="Topic"></div>
+              <div class="col-md-4"><input id="mentor-note" class="form-control" placeholder="Availability / note"></div>
+              <div class="col-md-2"><input id="mentor-capacity" type="number" min="1" class="form-control" placeholder="Capacity"></div>
+              <div class="col-md-2 d-grid"><button class="btn btn-soft" onclick="offerMentor()">Offer</button></div>
+            </div>
+          </div>
+
+          <div id="student-mentor" style="display:none" class="mt-3">
+            <div class="row g-2">
+              <div class="col-md-5"><input id="mentor-fac-email" class="form-control" placeholder="Faculty email to request"></div>
+              <div class="col-md-5"><input id="mentor-topic-req" class="form-control" placeholder="Topic"></div>
+              <div class="col-md-2 d-grid"><button class="btn btn-gradient" onclick="requestMentor()">Request</button></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recommendations -->
+        <div class="card-custom">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h5 class="mb-0">Recommendations</h5>
+            <div class="small-muted">Personalized suggestions</div>
+          </div>
+          <div class="d-flex gap-2 mb-2">
+            <button id="recs-btn" class="btn btn-outline-primary" onclick="getRecommend()">Get Recommendations</button>
+          </div>
+
+          <!-- Updated results area -->
+          <div id="recs">
+            <!-- will be populated by script.js -->
+          </div>
+        </div>
+
+      </section>
+    </main>
+  </div>
+
+  <!-- Toasts -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
